@@ -1,0 +1,48 @@
+﻿@page
+@model FundingDashboardAPI.Pages.Admin.IndexModel
+
+
+
+<h2>Funding</h2>
+
+<h3>@TempData["Message"]</h3>
+
+
+<a asp-page="Admin/InsertFund" class="linkbutton">Insert</a>
+
+<br />
+<br />
+
+<table border ="1">
+
+    <tr>
+        <th>Funding ID</th>
+        <th>Name</th>
+        <th>Service Line</th>
+        <th colspan="2">Actions</th>
+    </tr>
+
+    @foreach (var item in Model.Funding)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.ServiceLine</td>
+            
+            <td>
+                <a asp-page="UpdateFunding"
+                   asp-route-fundingId="@item.Id"
+                   class="linkbutton">Update</a>
+            </td>
+            <td>
+                <a asp-page="DeleteSkill"
+                   asp-route-fundingId="@item.Id"
+                   class="linkbutton">Delete</a>
+
+            </td>
+
+        </tr>
+    }
+
+
+</table>

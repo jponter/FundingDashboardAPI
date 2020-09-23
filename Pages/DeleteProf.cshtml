@@ -1,0 +1,50 @@
+﻿@page "{ProfessionId:int}"
+@model FundingDashboardAPI.Pages.DeleteProfModel
+
+
+<h2>Delete existing Profession</h2>
+<br />
+<h3 class="message">
+    WARNING: You are about to delete a profession, Make sure this is what you indend to do!
+</h3>
+<h3 class="message">@Model.Message</h3>
+
+
+@if (Model.DataFound)
+{
+    <form method="post">
+        <table border="0">
+            <tr>
+                <td class="right">
+                    <label asp-for="Profession.ProfessionId"></label> :
+                </td>
+                <td>
+                    <input type="hidden" asp-for="Profession.ProfessionId" />
+                    <span>@Model.Profession.ProfessionId</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="right">
+                    <label asp-for="Profession.Name"></label> :
+                </td>
+                <td>
+
+                    <span>@Model.Profession.Name</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit">DELETE PROFESSION</button>
+                </td>
+            </tr>
+
+
+        </table>
+    </form>
+}
+
+<br />
+<br />
+<a asp-page="ListProf">Back to Professions List</a>
+
+

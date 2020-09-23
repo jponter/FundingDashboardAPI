@@ -1,0 +1,33 @@
+﻿@page
+@model FundingDashboardAPI.Pages.InsertProfModel
+
+
+<h2>Insert New Profession</h2>
+
+<h3 class="message">@Model.Message</h3>
+
+<form method="post">
+    <table border="0">
+        <tr>
+            <td class="right">
+                <label asp-for="Profession.Name"></label> :
+            </td>
+            <td>
+                <input type="text" asp-for="Profession.Name" />
+                <span asp-validation-for="Profession.Name" class="message"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit">Save</button>
+            </td>
+        </tr>
+
+    </table>
+
+
+</form>
+
+<br />
+<br />
+<a asp-page="ListProf">Back to Professions List</a>

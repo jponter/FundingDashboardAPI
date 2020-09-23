@@ -1,0 +1,156 @@
+﻿@page "{fundingId:int}"
+@model FundingDashboardAPI.Pages.Admin.UpdateFundingModel
+
+
+<h2>Update existing Funding</h2>
+<h3 class="message">@Model.Message</h3>
+
+@if (Model.DataFound)
+{
+    <form method="post">
+        <table border="0">
+            <tr>
+                <td class="right">
+                    <label asp-for="funding.Id"></label> :
+                </td>
+                <td>
+                    <input type="hidden" asp-for="funding.Id" />
+                    <span>@Model.funding.Id</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="right">
+                    <label asp-for="funding.Name"></label> :
+                </td>
+                <td>
+                    <input type="text" asp-for="funding.Name" />
+                    <span asp-validation-for="funding.Name" class="message"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="right">
+                    <label asp-for="funding.ServiceLine"></label> :
+                </td>
+                <td>
+                    <input type="text" asp-for="funding.ServiceLine" />
+                    <span asp-validation-for="funding.ServiceLine" class="message"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="right">
+                    <label asp-for="funding.Region"></label> :
+                </td>
+                <td>
+                    <input type="text" asp-for="funding.Region" />
+                    <span asp-validation-for="funding.Region" class="message"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="right">
+                    <label asp-for="funding.MinimumCriteria"></label> :
+                </td>
+                <td>
+                    <input type="text" asp-for="funding.MinimumCriteria" />
+                    <span asp-validation-for="funding.MinimumCriteria" class="message"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="right">
+                    <label asp-for="funding.HowToApply"></label> :
+                </td>
+                <td>
+                    <input type="text" asp-for="funding.HowToApply" />
+                    <span asp-validation-for="funding.HowToApply" class="message"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="right">
+                    <label asp-for="funding.Description"></label> :
+                </td>
+                <td>
+                    <input type="text" asp-for="funding.Description" />
+                    <span asp-validation-for="funding.Description" class="message"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="right">
+                    <label asp-for="funding.WhenToApply"></label> :
+                </td>
+                <td>
+                    <input type="text" asp-for="funding.WhenToApply" />
+                    <span asp-validation-for="funding.WhenToApply" class="message"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="right">
+                    <label asp-for="funding.ApprovalProcess"></label> :
+                </td>
+                <td>
+                    <textarea rows="5" cols="80" asp-for="funding.ApprovalProcess"></textarea>
+                    <span asp-validation-for="funding.ApprovalProcess" class="message"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="right">
+                    <label asp-for="funding.FundingCollection"></label> :
+                </td>
+                <td>
+                    <input type="text" asp-for="funding.FundingCollection" />
+                    <span asp-validation-for="funding.FundingCollection" class="message"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="right">
+                    <label asp-for="funding.AddedBy"></label> :
+                </td>
+                <td>
+                    <input type="text" asp-for="funding.AddedBy" readonly/>
+                    <span asp-validation-for="funding.AddedBy" class="message"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="right">
+                    <label asp-for="funding.AddedOn"></label> :
+                </td>
+                <td>
+                    <input type="datetime-local" asp-for="funding.AddedOn" readonly />
+                    <span asp-validation-for="funding.AddedOn" class="message"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="right">
+                    <label asp-for="funding.Archived"></label> :
+                </td>
+                <td>
+                    <input type="checkbox" asp-for="funding.Archived" />
+                    <span asp-validation-for="funding.Archived" class="message"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <button type="submit">Save</button>
+                </td>
+            </tr>
+
+
+        </table>
+    </form>
+}
+
+<br />
+<br />
+<a asp-page="Index">Back to Funding List</a>
+
+

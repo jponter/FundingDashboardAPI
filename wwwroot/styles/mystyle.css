@@ -1,0 +1,165 @@
+body{
+font-family: 'Montserrat';
+font-size: 14px;
+}
+.column {
+    float: left;
+    width: 33.33%;
+    
+  }
+  
+  .row::after{
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* override some colours */
+  .bg-primary-jp{
+      background-color: #FAB41E ;
+      
+  }
+
+.btn-primary{
+    background-color: #fab41e;
+    border-color: #FAB41E;
+}
+
+.btn-primary.focus, .btn-primary:focus{
+    background-color: #503273;
+}
+
+  .btn-primary-jp:hover{
+      background-color: #000000;
+  }
+
+  .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle{
+      background-color: #FAB41E;
+      border-color: #FAB41E;
+  }
+
+  .dropdown-item.active, .dropdown-item:active{
+      background-color: #FAB41E;
+  }
+
+  .list-group-item.active{
+      background-color: #fab41e;
+      border-color: #FAB41E;
+  }
+
+  .disabledbutton {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.btn-secondary-jp {
+    background-color: #c30f5a;
+    border-color: #c30f5a;
+}
+
+.btn-secondary-jp:hover {
+    background-color: black;
+}
+
+
+
+  div.scroll {
+    background-color: #ffffff;
+    width: auto;
+    height: 500px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /*text-align: center; */
+    padding: 20px;
+    font-size: 15px;
+  }
+  
+  /* The container */
+  .container {
+      display: block;
+      position: relative;
+      padding-left: 35px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      font-size: 22px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+      background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+      background-color: #2196F3;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark::after {
+      content: "";
+      position: absolute;
+      display: none;
+  }
+  
+  ul {
+      list-style-type: none;
+
+  }
+  
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark::after {
+      left: 9px;
+      top: 5px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark::after {
+      display: block;
+  }
+  
+
+  .list-group{
+      font-size: small;
+    max-height: 300px;
+    margin-bottom: 10px;
+    overflow-y:auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+h3 {
+    display: inline-block;
+}
+
+/* table { page-break-inside:auto }
+tr    { page-break-inside:avoid; page-break-after:auto } */
+
+      /* EOS */

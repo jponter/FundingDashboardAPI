@@ -1,0 +1,62 @@
+﻿@page "{ProfessionId:int}"
+@model FundingDashboardAPI.Pages.InsertSkillModel
+
+
+
+<h2>Update existing Profession</h2>
+<h3 class="message">@Model.Message</h3>
+
+
+<form method="post">
+    <table border="0">
+        <tr>
+            <td class="right">
+                <label asp-for="Skill.ProfessionId"></label> :
+            </td>
+            <td>
+                <input type="hidden" asp-for="Skill.ProfessionId" value="@Model.ProfessionId" />
+                <span>@Model.ProfessionId</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="right">
+                <label asp-for="Skill.SkillCode"></label> :
+            </td>
+            <td>
+                <input type="text" asp-for="Skill.SkillCode" />
+                <span asp-validation-for="Skill.SkillCode" class="message"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="right">
+                <label asp-for="Skill.SkillLevel"></label> :
+            </td>
+            <td>
+                <input type="number" min="1" max="3" asp-for="Skill.SkillLevel" />
+                <span asp-validation-for="Skill.SkillLevel" class="message"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="right">
+                <label asp-for="Skill.SkillText"></label> :
+            </td>
+            <td>
+                <textarea asp-for="Skill.SkillText" rows="10" cols="70"></textarea>
+                <span asp-validation-for="Skill.SkillText" class="message"></span>
+            </td>
+        </tr>
+        <tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit">Save</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<br />
+<br />
+
+<a asp-page="ListSkills"
+   asp-route-professionId="@Model.ProfessionId" 
+   class="linkbutton">Back to Skills</a>

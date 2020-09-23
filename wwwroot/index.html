@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    type="text/css"> -->
+    <!-- Bootstrap CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.5/css/responsive.bootstrap4.min.css">
+
+    <link rel="stylesheet" href="./styles/site.css">
+    <link rel="stylesheet" href="./styles/mystyle.css">
+
+
+
+</head>
+
+<body>
+    <nav class="navbar bg-primary-jp navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fa d-inline fa-lg fa-circle"></i>
+                <b>Cloudreach Funding Dashboard</b>
+            </a>
+
+            <a class="navbar-brand float-right" data-toggle="tooltip" title="JLP" href="#">
+                <small>Version 0.1 - 14/09/2020</small>
+            </a>
+        </div>
+    </nav>
+    <div class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="btn-group" data-toggle="tooltip" title="Select CSP">
+                        <button class="btn btn-primary btn-primary-jp dropdown-toggle" data-toggle="dropdown"
+                                id="btnCSP">
+                            Select CSP
+                        </button>
+                        <div class="dropdown-menu">
+                            <button class="dropdown-item" type="button" onclick="setAWS()">AWS</button>
+                            <button class="dropdown-item" type="button" onclick="setAzure()">Azure</button>
+                            <button class="dropdown-item" type="button" onclick="setGCP()">GCP</button>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item" type="button" onclick="resetCSP()">Reset</button>
+
+
+                        </div>
+                    </div>
+
+                    <div class="btn-group" data-toggle="tooltip" title="Select Service Line">
+                        <button class="btn btn-primary btn-primary-jp dropdown-toggle" data-toggle="dropdown"
+                                id="btnServiceLine">
+                            Select Service Line
+                        </button>
+                        <div class="dropdown-menu">
+                            <button class="dropdown-item" type="button" onclick="setCore()">Software</button>
+                            <button class="dropdown-item" type="button" onclick="setSenior()">Analytics</button>
+                            <button class="dropdown-item" type="button" onclick="setPrinciple()">Migration</button>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item" type="button" onclick="resetServiceLine()">Reset</button>
+
+                        </div>
+                    </div>
+
+                    <div class="btn-group" data-toggle="tooltip" title="Select Geography">
+                        <button class="btn btn-primary btn-primary-jp dropdown-toggle" data-toggle="dropdown"
+                                id="btnGeography">
+                            Select Geography
+                        </button>
+                        <div class="dropdown-menu">
+                            <button class="dropdown-item" type="button" onclick="setCore()">United Kingdom</button>
+                            <button class="dropdown-item" type="button" onclick="setSenior()">Europe</button>
+                            <button class="dropdown-item" type="button" onclick="setPrinciple()">USA</button>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item" type="button" onclick="resetServiceLine()">Reset</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <div class="py-5">
+        <div class="container">
+
+
+
+        </div>
+    </div> -->
+    <!-- beging the bottom tables-->
+
+
+    <table id="funding" class="table table-striped table-bordered dataTable dtr-inline dt-responsive" style="width: 100%">
+        <thead>
+            <tr>
+                <th>Funding Name</th>
+                <th>CSP</th>
+                <th>Region</th>
+                <th>Service Line</th>
+                <th>Minimum Criteria</th>
+                <th>Description</th>
+                <th>How to Apply</th>
+                <th>When to Apply</th>
+                <th>Approval Process</th>
+                <th>Funding Collection Process</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Magic Funding 1</td>
+                <td>AWS</td>
+                <td>United Kingdom</td>
+                <td>Migration</td>
+                <td>Sub 200K turnover</td>
+                <td>
+                    Offset AWS usage costs incurred during solution development with AWS Promotional Credits.
+
+                    APN Partners can integrate AWS services into solutions and launch products built on AWS, faster and more efficiently.
+                </td>
+                <td><a href="www.magic.com">www.magic.com</a></td>
+                <td>On prospect</td>
+                <td>automatic</td>
+                <td>wired to integrator direct</td>
+            </tr>
+            <tr>
+                <td>Magic Funding 2</td>
+                <td>AWS</td>
+                <td>USA</td>
+                <td>Migration</td>
+                <td>Sub 200K turnover</td>
+                <td>funding for SMB</td>
+                <td>www.magic.com</td>
+                <td>On prospect</td>
+                <td>automatic</td>
+                <td>wired to integrator direct</td>
+            </tr>
+            <tr>
+                <td>Magic Funding 3</td>
+                <td>Azure</td>
+                <td>United Kingdom</td>
+                <td>Migration</td>
+                <td>Sub 200K turnover</td>
+                <td>funding for SMB</td>
+                <td>www.magic.com</td>
+                <td>On prospect</td>
+                <td>automatic</td>
+                <td>wired to integrator direct</td>
+            </tr>
+            <tr>
+                <td>Magic Funding 4</td>
+                <td>Azure</td>
+                <td>USA</td>
+                <td>Migration</td>
+                <td>Sub 200K turnover</td>
+                <td>funding for SMB</td>
+                <td>www.magic.com</td>
+                <td>On prospect</td>
+                <td>automatic</td>
+                <td>wired to integrator direct</td>
+            </tr>
+        </tbody>
+        <!--<tfoot>
+            <tr>
+                <th>Funding Name</th>
+                <th>CSP</th>
+                <th>Region</th>
+                <th>Service Line</th>
+                <th>Minimum Criteria</th>
+                <th>Description</th>
+                <th>How to Apply</th>
+                <th>When to Apply</th>
+                <th>Approval Process</th>
+                <th>Funding Collection Process</th>
+            </tr>
+        </tfoot>-->
+    </table>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.5/js/responsive.bootstrap4.min.js"></script>
+
+
+    <!-- Main entry-->
+    <script src="scripts/FundingDashboard.js">
+    </script>
+
+
+</body>
+
+</html>
