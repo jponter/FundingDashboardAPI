@@ -1,16 +1,16 @@
-﻿@page "{fundingId:int}"
-@model FundingDashboardAPI.Pages.Admin.UpdateFundingModel
+﻿@page
+@model FundingDashboardAPI.Pages.Admin.CreateFundingModel
 
 
-<h2>Update existing Funding</h2>
+
+<h2>Create New Funding</h2>
 <h2 class="message">@Model.Message</h2>
 <br />
 <a asp-page="Index">Back to Funding List</a>
 <hr />
 
 
-@if (Model.DataFound)
-{
+
 
     <form method="post">
         <div class="row">
@@ -19,7 +19,7 @@
 
 
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="funding.Id" />
+                @*<input type="hidden" asp-for="funding.Id" />*@
                 <div class="form-group">
                     <label asp-for="funding.Name" class="control-label"></label>
                     <input asp-for="funding.Name" class="form-control" />
@@ -27,10 +27,10 @@
                 </div>
 
                 @*<div class="form-group">
-                        <label asp-for="funding.Region" class="control-label"></label>
-                        <input asp-for="funding.Region" class="form-control" />
-                        <span asp-validation-for="funding.Region" class="text-danger"></span>
-                    </div>*@
+            <label asp-for="funding.Region" class="control-label"></label>
+            <input asp-for="funding.Region" class="form-control" />
+            <span asp-validation-for="funding.Region" class="text-danger"></span>
+        </div>*@
                 <div class="form-group">
                     <label>Funding Regions</label><br />
                     <div class="form-check form-check-inline">
@@ -49,7 +49,6 @@
                         <input class="form-check-input" asp-for="funding.ASIA" /> @Html.DisplayNameFor(model => model.funding.ASIA)
                     </div>
                 </div>
-                
                 <div class="form-group">
                     <label asp-for="funding.CSP" class="control-label"></label>
                     @{
@@ -58,8 +57,8 @@
                                 new SelectListItem { Text = "Azure", Value="AZURE"},
                                 new SelectListItem { Text = "AWS", Value="AWS"},
                                 new SelectListItem { Text = "GCP", Value="GCP"},
-                                
-            }, "Value", "Text");
+
+                            }, "Value", "Text");
 
                     }
                     @Html.DropDownListFor(m => m.funding.CSP, selectList1, null, new { @class = "custom-select" })
@@ -71,7 +70,7 @@
                     <label asp-for="funding.ServiceLine" class="control-label"></label>
                     @*<input asp-for="funding.ServiceLine" class="form-control" />*@
                     @{
-                        var selectList2 = new SelectList(
+                        var selectList = new SelectList(
                             new List<SelectListItem>{
                                 new SelectListItem { Text = "Advisory Services", Value="Advisory Services"},
                                 new SelectListItem { Text = "Platform Development", Value="Platform Development"},
@@ -81,10 +80,10 @@
                                 new SelectListItem { Text = "Cloud Management Services", Value="Cloud Management Services"},
                                 new SelectListItem { Text = "Platform Resale", Value="Platform Resale"},
                                 new SelectListItem { Text = "Software Services", Value="Software Services"},
-                    }, "Value", "Text");
+}, "Value", "Text");
 
                     }
-                    @Html.DropDownListFor(m => m.funding.ServiceLine, selectList2, null, new { @class = "custom-select" })
+                    @Html.DropDownListFor(m => m.funding.ServiceLine, selectList, null, new { @class = "custom-select" })
 
                     <span asp-validation-for="funding.ServiceLine" class="text-danger"></span>
                 </div>
@@ -94,21 +93,24 @@
                     <span asp-validation-for="funding.MinimumCriteria" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="funding.AddedBy" class="control-label"></label>
-                    <input asp-for="funding.AddedBy" class="form-control" readonly />
-                    <span asp-validation-for="funding.AddedBy" class="text-danger"></span>
+                    @*<label asp-for="funding.AddedBy" class="control-label"></label>*@
+                    <input type="hidden" asp-for="funding.AddedBy" class="form-control" readonly value="@User.Identity.Name" />
+                    @*<span asp-validation-for="funding.AddedBy" class="text-danger"></span>*@
                 </div>
+
                 <div class="form-group">
-                    <label asp-for="funding.AddedOn" class="control-label"></label>
-                    <input asp-for="funding.AddedOn" class="form-control" readonly />
-                    <span asp-validation-for="funding.AddedOn" class="text-danger"></span>
+                    @*<label asp-for="funding.AddedOn" class="control-label"></label>*@
+                    <!input type="hidden" asp-for="funding.AddedOn" class="form-control" readonly value="@Model.datetime" />
+                    @*<span asp-validation-for="funding.AddedOn" class="text-danger"></span>*@
                 </div>
 
                 <div class="form-group form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" asp-for="funding.Archived" /> @Html.DisplayNameFor(model => model.funding.Archived)
-                    </label>
+                    @*<label class="form-check-label">*@
+                    <!input type="hidden" class="form-check-input" asp-for="funding.Archived" value="" />
+                    @*@Html.DisplayNameFor(model => model.funding.Archived)*@
+                    @*</label>*@
                 </div>
+
                 <div class="form-group">
                     <input type="submit" value="Save" class="btn btn-primary" />
                 </div>
@@ -150,5 +152,3 @@
     <br />
     <br />
     <a asp-page="Index">Back to Funding List</a>
-
-}

@@ -10,62 +10,60 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FundingDashboardAPI.Pages.Admin
 {
-    public class UpdateFundingModel : PageModel
+    public class CreateFundingModel : PageModel
     {
-
         private readonly IFundingRepository _fundingRepo;
 
         [BindProperty]
         public Funding funding { get; set; }
 
         public string Message { get; set; }
-        public string dt { get; set; }
-        public bool DataFound { get; set; } = true;
+        
+        public DateTime datetime { get; set; }
 
-        public UpdateFundingModel(IFundingRepository fundingRepo)
+        public CreateFundingModel(IFundingRepository fundingRepo)
         {
             _fundingRepo = fundingRepo;
         }
 
-        public async Task<IActionResult> OnGetAsync(int fundingId)
+        public IActionResult OnGet()
         {
-            this.funding = await _fundingRepo.SelectById(fundingId);
+            datetime = DateTime.Now;
+           
             
-            if (funding == null)
-            {
-                this.DataFound = false;
-                this.Message = "Funding Not Found";
-                
-            }
-            else
-            {
-                this.DataFound = true;
-                this.Message = "";
-                
-            }
-            dt = funding.AddedOn.ToString("yyyy-MM-dd HH:mm:ss");
+            
             return Page();
 
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
+
+            DateTime myDateTime = DateTime.Now;
+            string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            //string dt = DateTime.Now.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
+            funding.AddedOn = DateTime.Now;
+            funding.AddedBy = User.Identity.Name;
+
             if (ModelState.IsValid)
             {
+               
+
                 try
                 {
 
-                
-                bool success = await _fundingRepo.Update(funding);
+
+                    bool success = await _fundingRepo.Insert(funding);
                     if (success)
                     {
-                        Message = "Funding Updated Successfully";
+                        TempData["Message"] = "Funding Created Successfully";
+                        return RedirectToPage("./Index");
                     }
                     else
                     {
-                        Message = "Update failed! ";
+                        Message = "Create failed! ";
                     }
-                
+
                 }
                 catch (DbUpdateException ex1)
                 {

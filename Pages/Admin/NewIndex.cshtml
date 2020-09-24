@@ -22,9 +22,18 @@
     <tr>
         @*<th>Funding ID</th>*@
         <th>Name</th>
-        <th>CSP</th>
+        <th>
+            <a asp-page="./NewIndex" asp-route-sortOrder="@Model.CSPSort">
+                @Html.DisplayNameFor(model => model.Funding[0].CSP)
+            </a>
+        
+        </th>
         <th>Service Line</th>
-        <th>Added On</th>
+        <th>
+            <a asp-page="./NewIndex" asp-route-sortOrder="@Model.DateSort">
+                @Html.DisplayNameFor(model => model.Funding[0].AddedOn)
+            </a>
+        </th>
         <th>Added By</th>
         <th>Archived</th>
         <th>Actions</th>

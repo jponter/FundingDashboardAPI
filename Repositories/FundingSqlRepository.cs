@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 
 namespace FundingDashboardAPI.Repositories
@@ -16,14 +17,45 @@ namespace FundingDashboardAPI.Repositories
             this.db = db;
         }
 
-        public Task<bool> Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            throw new NotImplementedException();
+            Funding funding = new Funding();
+            funding = await db.Funding.FirstOrDefaultAsync(f => f.Id == id);
+
+            db.Remove(funding);
+            int count = await db.SaveChangesAsync();
+
+            if (count > 0)
+            {
+                return true;
+                //update was successful
+            }
+            else
+            {
+                return false;
+            }
+            
         }
 
-        public Task<bool> Insert(Funding funding)
+        public async Task<bool> Insert(Funding funding)
         {
-            throw new NotImplementedException();
+            if (funding != null)
+            {
+                db.Add(funding);
+                int count = await db.SaveChangesAsync();
+
+                if (count > 0)
+                {
+                    return true;
+                    //update was successful
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            return false;
         }
 
         public async Task<List<Funding>> SelectAll()
