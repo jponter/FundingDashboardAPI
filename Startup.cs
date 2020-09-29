@@ -14,6 +14,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.HttpOverrides;
+
+
 namespace FundingDashboardAPI
 {
     public class Startup
@@ -41,11 +46,18 @@ namespace FundingDashboardAPI
 
             services.AddIdentity<AppIdentityUser, AppIdentityRole>().AddEntityFrameworkStores<AppIdentityDbContext>();
 
+        
+
+
             services.ConfigureApplicationCookie(opt =>
             {
                 opt.LoginPath = "/Security/SignIn";
                 opt.AccessDeniedPath = "/Security/AccessDenied";
             });
+
+
+
+
 
             //services.AddScoped<IEmployeeRepository, EmployeeSQLRepository>();
             //services.AddScoped<ICountryRespository, CountrySQLRepository>();
@@ -66,6 +78,8 @@ namespace FundingDashboardAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+         
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -82,11 +96,24 @@ namespace FundingDashboardAPI
             app.UseAuthentication();
             app.UseAuthorization();
 
+
+            // This is needed if running behind a reverse proxy
+            // like ngrok which is great for testing while developing
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                RequireHeaderSymmetry = false,
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
+
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });
+
+            
+
         }
     }
 }
