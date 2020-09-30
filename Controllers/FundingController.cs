@@ -27,5 +27,26 @@ namespace FundingDashboardAPI.Controllers
             return funding;
         }
 
+        [HttpGet("byCSP")]
+        public async Task<List<Funding>> GetByCSP(string CSP)
+        {
+            var funding = await fundingRepository.SelectByCSP(CSP);
+            return funding;
+        }
+
+        [HttpGet("bySL")]
+        public async Task<List<Funding>> GetBySL(string SL)
+        {
+            var funding = await fundingRepository.SelectByServiceLine(SL);
+            return funding;
+        }
+
+        [HttpGet("byRegion")]
+        public async Task<List<Funding>> GetByRegion(string region)
+        {
+            var funding = await fundingRepository.SelectByRegion(region);
+            return funding;
+        }
+
     }
 }

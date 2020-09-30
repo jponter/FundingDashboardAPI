@@ -1,5 +1,5 @@
 ﻿@page
-@model FundingDashboardAPI.Pages.Admin.NewIndexModel
+@model FundingDashboardAPI.Pages.Admin.IndexModel
 
 
 
@@ -17,7 +17,7 @@
 <br />
 <br />
 
-<table class="table" >
+<table id="funding" class="table table-striped table-bordered dataTable dtr-inline dt-responsive" style="width: 100%">
 
     <tr>
         @*<th>Funding ID</th>*@
@@ -30,7 +30,7 @@
         <th>Actions</th>
     </tr>
 
-    @foreach (var item in Model.Funding)
+    @foreach (var item in Model.Fundings)
     {
         <tr>
             @*<td>@item.Id</td>*@
@@ -47,19 +47,30 @@
             </td>
 
             @*<td>
-                <a asp-page="UpdateFunding"
-                   asp-route-fundingId="@item.Id"
-                   class="linkbutton">Update</a>
-            </td>
-            <td>
-                <a asp-page="DeleteFunding"
-                   asp-route-fundingId="@item.Id"
-                   class="linkbutton">Delete</a>
+                    <a asp-page="UpdateFunding"
+                       asp-route-fundingId="@item.Id"
+                       class="linkbutton">Update</a>
+                </td>
+                <td>
+                    <a asp-page="DeleteFunding"
+                       asp-route-fundingId="@item.Id"
+                       class="linkbutton">Delete</a>
 
-            </td>*@
+                </td>*@
 
         </tr>
+
     }
 
 
 </table>
+
+@{
+    var prevDisabled = !Model.Fundings.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Fundings.HasNextPage ? "disabled" : "";
+}
+<div class="float-right">
+<a asp-page="./Index" asp-route-pageIndex="@(Model.Fundings.PageIndex - 1)"  class="btn btn-primary @prevDisabled">Previous</a>
+<a asp-page="./Index" asp-route-pageIndex="@(Model.Fundings.PageIndex + 1)"  class="btn btn-primary @nextDisabled">Next</a>
+</div>
+

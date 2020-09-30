@@ -43,14 +43,14 @@
                     <div class="btn-group" data-toggle="tooltip" title="Select CSP">
                         <button class="btn btn-primary btn-primary-jp dropdown-toggle" data-toggle="dropdown"
                                 id="btnCSP">
-                            Select CSP
+                            Select by CSP
                         </button>
                         <div class="dropdown-menu">
-                            <button class="dropdown-item" type="button" onclick="setAWS()">AWS</button>
-                            <button class="dropdown-item" type="button" onclick="setAzure()">Azure</button>
-                            <button class="dropdown-item" type="button" onclick="setGCP()">GCP</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingCSP('AWS')">AWS</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingCSP('AZURE')">Azure</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingCSP('GCP')">GCP</button>
                             <div class="dropdown-divider"></div>
-                            <button class="dropdown-item" type="button" onclick="resetCSP()">Reset</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingReset()">Reset</button>
 
 
                         </div>
@@ -59,14 +59,19 @@
                     <div class="btn-group" data-toggle="tooltip" title="Select Service Line">
                         <button class="btn btn-primary btn-primary-jp dropdown-toggle" data-toggle="dropdown"
                                 id="btnServiceLine">
-                            Select Service Line
+                            Select by Service Line
                         </button>
                         <div class="dropdown-menu">
-                            <button class="dropdown-item" type="button" onclick="setCore()">Software</button>
-                            <button class="dropdown-item" type="button" onclick="setSenior()">Analytics</button>
-                            <button class="dropdown-item" type="button" onclick="setPrinciple()">Migration</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingSL('Advisory')">Advisory Services</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingSL('Platform%20Development')">Platform Development</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingSL('Migration')">Migration Services</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingSL('App')">App Development</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingSL('Data')">Data & Analytics Services</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingSL('Cloud')">Cloud Management Services</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingSL('Resale')">Platform Resale</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingSL('Software')">Software Services</button>
                             <div class="dropdown-divider"></div>
-                            <button class="dropdown-item" type="button" onclick="resetServiceLine()">Reset</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingReset()">Reset</button>
 
                         </div>
                     </div>
@@ -74,14 +79,15 @@
                     <div class="btn-group" data-toggle="tooltip" title="Select Geography">
                         <button class="btn btn-primary btn-primary-jp dropdown-toggle" data-toggle="dropdown"
                                 id="btnGeography">
-                            Select Geography
+                            Select by Geography
                         </button>
                         <div class="dropdown-menu">
-                            <button class="dropdown-item" type="button" onclick="setCore()">United Kingdom</button>
-                            <button class="dropdown-item" type="button" onclick="setSenior()">Europe</button>
-                            <button class="dropdown-item" type="button" onclick="setPrinciple()">USA</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingGeo('uk')">United Kingdom</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingGeo('usa')">USA</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingGeo('eur')">Europe</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingGeo('asia')">Asia</button>
                             <div class="dropdown-divider"></div>
-                            <button class="dropdown-item" type="button" onclick="resetServiceLine()">Reset</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingReset()">Reset</button>
 
                         </div>
                     </div>
@@ -151,6 +157,8 @@
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.5/js/responsive.bootstrap4.min.js"></script>
+    <script src="scripts/moment-with-locales.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.10.21/dataRender/datetime.js"></script>
 
 
     <!-- Main entry-->

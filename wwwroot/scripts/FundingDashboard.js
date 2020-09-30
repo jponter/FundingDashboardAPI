@@ -3,12 +3,23 @@
 //set localhost to true for local debug in visual studio
 //SET to FALSE FOR RELEASE!
 var localhost = true;
-$('#funding').hide();
+var serverData = null;
+
+var table = null;
+//$('#funding').hide();
+
+if (localhost) {
+    var fundingURL = "http://localhost:8080/api/Funding";
+    var resetURL = fundingURL;
+} else {
+    var fundingURL = "https://careerframeworkapi.azurewebsites.net/api/Professions";
+}
 
 //< !--Main entry-- >
 $(document).ready(function () {
-    
-    loadFundingAll();
+
+    InitialiseTable();
+    loadFundingReset();
     //InitialiseTable();
 
 });
@@ -17,9 +28,39 @@ $(document).ready(function () {
 function InitialiseTable() {
 
               
-    $('#funding').DataTable({
+    table = $('#funding').DataTable({
+        data: serverData,
+        lengthMenu: [5,10,15,20,25],
+        columns: [
+            { data: "name" },
+            { data: "csp" },
+            { data: "serviceLine" },
+            { data: "minimumCriteria" },
+            { data: "description" },
+            { data: "howToApply" },
+            { data: "whenToApply" },
+            { data: "approvalProcess" },
+            { data: "fundingCollection" },
+            { data: "addedBy" },
+            { data: "addedOn" },
+            { data: "uk" },
+            { data: "usa" },
+            { data: "eur" },
+            {data: "asia"}
 
-        
+            
+                    //    '<td> ' + obj.whenToApply + '</td> ' +
+                    //    '<td> ' + obj.approvalProcess + '</td> ' +
+                    //    '<td> ' + obj.fundingCollection + '</td> ' +
+                    //    '<td> ' + obj.addedBy + '</td> ' +
+                    //    '<td> ' + d.toLocaleDateString() + '</td> ' +
+                    //    '<td> ' + obj.uk + '</td> ' +
+                    //    '<td> ' + obj.usa + '</td> ' +
+                    //    '<td> ' + obj.eur + '</td> ' +
+                    //    '<td> ' + obj.asia + '</td></tr>';
+
+        ],
+
         responsive: {
             details: {
 
@@ -35,10 +76,16 @@ function InitialiseTable() {
                 })
             }
         },
+        
 
         columnDefs:
             [
                 { className: "mobile-p", "targets": [3] },
+
+                {
+                    targets: 10,
+                    render: $.fn.dataTable.render.moment("YYYY-MM-DDTHH:mm:ss","DD-MM-YYYY")
+                },
 
                 {
                     targets: [1,2,3,4,5],
@@ -61,34 +108,28 @@ function InitialiseTable() {
                 // }
 
             ]
+        
 
 
     });
        
 
-    $('#funding').show();    
+    //$('#funding').show();    
     
 }
 
 
-function loadFundingAll() {
-
-    if (localhost) {
-        var fundingURL = "http://localhost:8080/api/Funding";
-    } else {
-        var fundingURL = "https://careerframeworkapi.azurewebsites.net/api/Professions";
-    }
-
-
-
+function loadFundingReset() {
     try {
         //get the funding
-        $.getJSON(fundingURL, function (data, status) {
+        $.getJSON(resetURL, function (data, status) {
             console.log("Status: " + status);
             if (status == "success") {
                 console.log("getJSON-Funding:");
-                console.log("URL = " + fundingURL);
+                console.log("URL = " + resetURL);
                 console.log(data);
+
+                serverData = data;
 
                 $(data).each(function (index, obj) {
 
@@ -105,45 +146,67 @@ function loadFundingAll() {
 
 
 
-                    //append to #funding
-
-                    //<th>Funding Name</th>
-                    //<th>CSP</th>
-                    //<th>Region</th>
-                    //<th>Service Line</th>
-                    //<th>Minimum Criteria</th>
-                    //<th>Description</th>
-                    //<th>How to Apply</th>
-                    //<th>When to Apply</th>
-                    //<th>Approval Process</th>
-                    //<th>Funding Collection Process</th>
-
-                    var newReqRow = '<tr><td>' + obj.name + '</td><td> ' + obj.csp + '</td ><td>' + obj.serviceLine +
-                        '<td> ' + obj.minimumCriteria + '</td> ' +
-                        '<td> ' + obj.description + '</td> ' +
-                        '<td>' + obj.howToApply + '</td>' +
-                        '<td> ' + obj.whenToApply + '</td> ' +
-                        '<td> ' + obj.approvalProcess + '</td> ' +
-                        '<td> ' + obj.fundingCollection + '</td> ' +
-                        '<td> ' + obj.addedBy + '</td> ' +
-                        '<td> ' + d.toLocaleDateString() + '</td> ' +
-                        '<td> ' + obj.uk + '</td> ' +
-                        '<td> ' + obj.usa + '</td> ' +
-                        '<td> ' + obj.eur + '</td> ' +
-                        '<td> ' + obj.asia + '</td></tr>';
-
-
-                    $("#funding").append(newReqRow);
-
-                    //$("#funding tbody").append("<tr><td>" + obj.name + "</td>< td > " + "data" + "</td >< td >" + obj.serviceLine + "</td ></tr >");
-
-
-
-
-                    //href="#" class= "list-group-item list-group-item-action" id = ' + obj.skillCode + ' > ' + text + '</a > ');
 
 
                 });
+
+                var datatable = $('#funding').DataTable();
+
+                //change the datatable data
+                datatable.clear();
+                datatable.rows.add(data);
+                datatable.draw();
+                //InitialiseTable();
+            } else {
+                alert("Database Connection Error");
+                alert = true;
+            }
+
+
+        });
+
+    }
+    catch (e) {
+        alert(e);
+        console.log("error getting funding");
+    }
+
+   
+}
+
+function loadFundingCSP(csp) {
+
+    try {
+        //get the funding
+        $.getJSON(fundingURL + "/byCSP?CSP=" + csp, function (data, status) {
+            console.log("Status: " + status);
+            if (status == "success") {
+                console.log("getJSON-Funding:");
+                console.log("URL = " + fundingURL + "/byCSP?CSP=" + csp);
+                console.log(data);
+
+                $(data).each(function (index, obj) {
+
+                    //var text = $.trim(obj.skillText);
+                    console.log("Ob: " + obj.id);
+                    console.log("ObName: " + obj.name);
+                    var csp = $.trim(obj.csp);
+                    console.log("ObCSP: " + csp);
+                    var serviceLine = $.trim(obj.serviceLine);
+                    console.log("ObCSP: " + serviceLine);
+
+                    var isoDate = obj.addedOn;
+                    var d = new Date(isoDate);
+
+                });
+
+
+                var datatable = $('#funding').DataTable();
+
+                //change the datatable data
+                datatable.clear();
+                datatable.rows.add(data);
+                datatable.draw();
 
 
             } else {
@@ -160,9 +223,119 @@ function loadFundingAll() {
         console.log("error getting funding");
     }
 
-    console.log("init table begin time wait");
-    setTimeout(InitialiseTable, 1000);
-    console.log("init table end time wait");
+
+}
+
+function loadFundingSL(SL) {
+
+    try {
+        //get the funding
+        $.getJSON(fundingURL + "/bySL?SL=" + SL, function (data, status) {
+            console.log("Status: " + status);
+            if (status == "success") {
+                console.log("getJSON-Funding:");
+                console.log("URL = " + fundingURL + "/bySL?SL=" + SL);
+                console.log(data);
+
+                $(data).each(function (index, obj) {
+
+                    //var text = $.trim(obj.skillText);
+                    console.log("Ob: " + obj.id);
+                    console.log("ObName: " + obj.name);
+                    var csp = $.trim(obj.csp);
+                    console.log("ObCSP: " + csp);
+                    var serviceLine = $.trim(obj.serviceLine);
+                    console.log("ObCSP: " + serviceLine);
+
+                    var isoDate = obj.addedOn;
+                    var d = new Date(isoDate);
+
+                });
+
+
+                var datatable = $('#funding').DataTable();
+
+                //change the datatable data
+                datatable.clear();
+                datatable.rows.add(data);
+                datatable.draw();
+
+
+            } else {
+                alert("Database Connection Error");
+                alert = true;
+            }
+
+
+        });
+
+    }
+    catch (e) {
+        alert(e);
+        console.log("error getting funding");
+    }
+
+
+}
+
+function loadFundingGeo(geo) {
+
+    try {
+        //get the funding
+        $.getJSON(fundingURL + "/byRegion?Region=" + geo, function (data, status) {
+            console.log("Status: " + status);
+            if (status == "success") {
+                console.log("getJSON-Funding:");
+                console.log("URL = " + fundingURL + "/byRegion?Region=" + geo);
+                console.log(data);
+
+                $(data).each(function (index, obj) {
+
+                    //var text = $.trim(obj.skillText);
+                    console.log("Ob: " + obj.id);
+                    console.log("ObName: " + obj.name);
+                    var csp = $.trim(obj.csp);
+                    console.log("ObCSP: " + csp);
+                    var serviceLine = $.trim(obj.serviceLine);
+                    console.log("ObCSP: " + serviceLine);
+
+                    var isoDate = obj.addedOn;
+                    var d = new Date(isoDate);
+
+                });
+
+
+                var datatable = $('#funding').DataTable();
+
+                //change the datatable data
+                datatable.clear();
+                datatable.rows.add(data);
+                datatable.draw();
+
+
+            } else {
+                alert("Database Connection Error");
+                alert = true;
+            }
+
+
+        });
+
+    }
+    catch (e) {
+        alert(e);
+        console.log("error getting funding");
+    }
+
+
+}
+
+
+
+//clear table
+var clearFundingTable = function () {
+    console.log("Clear #funding");
+    $("#funding tbody tr").remove();
 }
 
 
