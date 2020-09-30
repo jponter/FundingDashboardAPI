@@ -62,8 +62,7 @@ namespace FundingDashboardAPI
             //services.AddScoped<IEmployeeRepository, EmployeeSQLRepository>();
             //services.AddScoped<ICountryRespository, CountrySQLRepository>();
 
-            services.AddScoped<ISkillRepository, SkillSqlRepository>();
-            services.AddScoped<IProfessionRepository, ProfessionSqlRepository>();
+           
             services.AddScoped<IFundingRepository, FundingSqlRepository>();
 
             services.AddRazorPages().AddRazorPagesOptions(options =>

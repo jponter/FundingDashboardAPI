@@ -16,8 +16,7 @@ namespace FundingDashboardAPI.Models
         }
 
         public virtual DbSet<Funding> Funding { get; set; }
-        public virtual DbSet<Professions> Professions { get; set; }
-        public virtual DbSet<Skills> Skills { get; set; }
+        
     }
 }
 

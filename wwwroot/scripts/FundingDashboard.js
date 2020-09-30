@@ -2,7 +2,7 @@
 
 //set localhost to true for local debug in visual studio
 //SET to FALSE FOR RELEASE!
-var localhost = true;
+var localhost = false;
 var serverData = null;
 
 var table = null;
@@ -12,7 +12,8 @@ if (localhost) {
     var fundingURL = "http://localhost:8080/api/Funding";
     var resetURL = fundingURL;
 } else {
-    var fundingURL = "https://careerframeworkapi.azurewebsites.net/api/Professions";
+    var fundingURL = "https://fundingdashboardapi.azurewebsites.net/api/Funding";
+    var resetURL = fundingURL;
 }
 
 //< !--Main entry-- >
