@@ -1,9 +1,9 @@
-﻿#CareerFrameworkAPI
+﻿#FundingDashboardAPI
 
-An API and associated front end website developed for Cloudreach Professions business unit
+An API and associated front end website developed for Cloudreach Partners business unit
 
 Aim:
-Simple visualisation of known and required skills to advance seniority in a given Profession.
+Funding Dashboard to allow easier tracking and searching of current promotions
 
 
 
@@ -16,5 +16,4 @@ Utilises:
 		html/JQuery/Javascript/Bootstrap/CSS
 
 
-v1.2: Public release of code
-v1.21: Azure Pipeline build configured
+v0.9 debug candidate
