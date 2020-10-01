@@ -68,7 +68,7 @@ function InitialiseTable() {
                 display: $.fn.dataTable.Responsive.display.modal({
                     header: function (row) {
                         var data = row.data();
-                        return 'Details for ' + data[0];
+                        return 'Details for ' + data.name;
                             //+ ' CSP: ' + data[1];
                     }
                 }),
