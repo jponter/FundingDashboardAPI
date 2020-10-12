@@ -16,4 +16,10 @@ Utilises:
 		html/JQuery/Javascript/Bootstrap/CSS
 
 
+
+
+
 v0.9 debug candidate
+
+12/10/2020 - v1.0beta 
+--Identity Framework replaced with OneLogin support.
