@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using FundingDashboardAPI.Models;
 using FundingDashboardAPI.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace FundingDashboardAPI.Pages.Admin
 {
+    [Authorize(Policy = "FundingAdmin")]
     public class CreateFundingModel : PageModel
     {
         private readonly IFundingRepository _fundingRepo;

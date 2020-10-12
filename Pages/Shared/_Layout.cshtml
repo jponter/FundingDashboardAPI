@@ -14,12 +14,12 @@
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     
-    <script src="~/Scripts/jquery.js"></script>
-    <script src="~/Scripts/jquery.validate.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/wwwsecure/Scripts/jquery.js"></script>
+    <script src="~/wwwsecure/Scripts/jquery.validate.js"></script>
+    <script src="~/wwwsecure/Scripts/jquery.validate.unobtrusive.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="/styles/mystyle.css" />
-    <link rel="stylesheet" type="text/css" href="/styles/site.css" />
+    <link rel="stylesheet" type="text/css" href="/wwwsecure/styles/mystyle.css" />
+    <link rel="stylesheet" type="text/css" href="/wwwsecure/styles/site.css" />
 
 </head>
 <body>
@@ -46,7 +46,7 @@
     @if (User.Identity.IsAuthenticated)
     {
         <h2>You are signed in as @User.Identity.Name</h2>
-        <form asp-page="/Security/SignOut" method="post">
+        <form asp-page="/admin/security" method="post">
             <button type="submit">Sign Out</button>
         </form>
     }

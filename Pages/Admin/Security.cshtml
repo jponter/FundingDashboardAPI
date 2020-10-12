@@ -1,0 +1,23 @@
+﻿@page
+@model FundingDashboardAPI.Pages.Admin.SecurityModel
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+
+are you an admin @Model.isAdmin
+
+
+<dl>
+    @foreach (var claim in User.Claims)
+    {
+        <dt>@claim.Type</dt>
+        <dd>@claim.Value</dd>
+    }
+</dl>
+
+
+
+<form method="post" novalidate="novalidate">
+
+    <button action="submit">LOG OUT</button>
+</form>

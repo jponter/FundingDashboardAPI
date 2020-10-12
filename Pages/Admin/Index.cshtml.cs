@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FundingDashboardAPI.Pages.Admin
 {
-    [Authorize(Roles = "Manager")]
+    [Authorize(Policy = "FundingAdmin")]
     public class IndexModel : PageModel
     {
 

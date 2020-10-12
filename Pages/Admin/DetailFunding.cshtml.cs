@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FundingDashboardAPI.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FundingDashboardAPI.Pages.Admin
 {
+    [Authorize(Policy = "FundingAdmin")]
     public class DetailFundingModel : PageModel
     {
         private readonly IFundingRepository _fundingRepo;

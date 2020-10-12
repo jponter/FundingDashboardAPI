@@ -4,11 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using FundingDashboardAPI.Models;
 using FundingDashboardAPI.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FundingDashboardAPI.Controllers
-{
+{   [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class FundingController : ControllerBase

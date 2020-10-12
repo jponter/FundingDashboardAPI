@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    type="text/css"> -->
+    <!-- Bootstrap CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.5/css/responsive.bootstrap4.min.css">
+
+    <link rel="stylesheet" href="./styles/site.css">
+    <link rel="stylesheet" href="./styles/mystyle.css">
+
+
+
+</head>
+
+<body>
+    <nav class="navbar bg-primary-jp navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fa d-inline fa-lg fa-circle"></i>
+                <b>Cloudreach Funding Dashboard</b>
+            </a>
+
+            <a class="navbar-brand float-right" data-toggle="tooltip" title="JLP" href="#">
+                <small>Version 1.0Beta - 12/10/2020</small>
+            </a>
+        </div>
+    </nav>
+    <div class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="btn-group" data-toggle="tooltip" title="Select CSP">
+                        <button class="btn btn-primary btn-primary-jp dropdown-toggle" data-toggle="dropdown"
+                                id="btnCSP">
+                            Select by CSP
+                        </button>
+                        <div class="dropdown-menu">
+                            <button class="dropdown-item" type="button" onclick="loadFundingCSP('AWS')">AWS</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingCSP('AZURE')">Azure</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingCSP('GCP')">GCP</button>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item" type="button" onclick="loadFundingReset()">Reset</button>
+
+
+                        </div>
+                    </div>
+
+                    <div class="btn-group" data-toggle="tooltip" title="Select Service Line">
+                        <button class="btn btn-primary btn-primary-jp dropdown-toggle" data-toggle="dropdown"
+                                id="btnServiceLine">
+                            Select by Service Line
+                        </button>
+                        <div class="dropdown-menu">
+                            <button class="dropdown-item" type="button" onclick="loadFundingSL('Advisory')">Advisory Services</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingSL('Platform%20Development')">Platform Development</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingSL('Migration')">Migration Services</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingSL('App')">App Development</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingSL('Data')">Data & Analytics Services</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingSL('Cloud')">Cloud Management Services</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingSL('Resale')">Platform Resale</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingSL('Software')">Software Services</button>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item" type="button" onclick="loadFundingReset()">Reset</button>
+
+                        </div>
+                    </div>
+
+                    <div class="btn-group" data-toggle="tooltip" title="Select Geography">
+                        <button class="btn btn-primary btn-primary-jp dropdown-toggle" data-toggle="dropdown"
+                                id="btnGeography">
+                            Select by Geography
+                        </button>
+                        <div class="dropdown-menu">
+                            <button class="dropdown-item" type="button" onclick="loadFundingGeo('uk')">United Kingdom</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingGeo('usa')">USA</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingGeo('eur')">Europe</button>
+                            <button class="dropdown-item" type="button" onclick="loadFundingGeo('asia')">Asia</button>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item" type="button" onclick="loadFundingReset()">Reset</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <div class="py-5">
+        <div class="container">
+
+
+
+        </div>
+    </div> -->
+    <!-- beging the bottom tables-->
+
+
+    <table id="funding" class="table table-striped table-bordered dataTable dtr-inline dt-responsive" style="width: 100%">
+        <thead>
+            <tr>
+                <th>Funding Name</th>
+                <th>CSP</th>
+                <th>Service Line</th>
+                <th>Minimum Criteria</th>
+                <th>Description</th>
+                <th>How to Apply</th>
+                <th>When to Apply</th>
+                <th>Approval Process</th>
+                <th>Funding Collection Process</th>
+                <th>Added By</th>
+                <th>Added On</th>
+                <th>UK</th>
+                <th>USA</th>
+                <th>EUR</th>
+                <th>Asia</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+        <!--<tfoot>
+            <tr>
+                <th>Funding Name</th>
+                <th>CSP</th>
+                <th>Region</th>
+                <th>Service Line</th>
+                <th>Minimum Criteria</th>
+                <th>Description</th>
+                <th>How to Apply</th>
+                <th>When to Apply</th>
+                <th>Approval Process</th>
+                <th>Funding Collection Process</th>
+            </tr>
+        </tfoot>-->
+    </table>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.5/js/responsive.bootstrap4.min.js"></script>
+    <script src="scripts/moment-with-locales.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.10.21/dataRender/datetime.js"></script>
+
+
+    <!-- Main entry-->
+    <script src="scripts/FundingDashboard.js">
+    </script>
+
+
+</body>
+
+</html>
