@@ -17,18 +17,21 @@
 <br />
 <br />
 
-<table id="funding" class="table table-striped table-bordered dataTable dtr-inline dt-responsive" style="width: 100%">
+<table id="funding" class="table table-striped table-bordered  " style="width: 100%">
+    <thead class="thead-light">
+        <tr>
+            @*<th>Funding ID</th>*@
 
-    <tr>
-        @*<th>Funding ID</th>*@
-        <th>Name</th>
-        <th>CSP</th>
-        <th>Service Line</th>
-        <th>Added On</th>
-        <th>Added By</th>
-        <th>Archived</th>
-        <th>Actions</th>
-    </tr>
+            <th>Name</th>
+            <th>CSP</th>
+            <th>Service Line</th>
+            <th>Added On</th>
+            <th>Added By</th>
+            <th>Archived</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
 
     @foreach (var item in Model.Fundings)
     {
@@ -70,7 +73,7 @@
     var nextDisabled = !Model.Fundings.HasNextPage ? "disabled" : "";
 }
 <div class="float-right">
-<a asp-page="./Index" asp-route-pageIndex="@(Model.Fundings.PageIndex - 1)"  class="btn btn-primary @prevDisabled">Previous</a>
-<a asp-page="./Index" asp-route-pageIndex="@(Model.Fundings.PageIndex + 1)"  class="btn btn-primary @nextDisabled">Next</a>
+    <a asp-page="./Index" asp-route-pageIndex="@(Model.Fundings.PageIndex - 1)" class="btn btn-primary @prevDisabled">Previous</a>
+    <a asp-page="./Index" asp-route-pageIndex="@(Model.Fundings.PageIndex + 1)" class="btn btn-primary @nextDisabled">Next</a>
 </div>
 

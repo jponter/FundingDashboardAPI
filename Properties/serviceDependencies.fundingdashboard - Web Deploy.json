@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/sqlserver-fundingdashboard/databases/FundingDashboardAPI",
+      "type": "mssql.azure",
+      "connectionId": "AppDb",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

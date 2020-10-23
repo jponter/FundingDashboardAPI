@@ -12,7 +12,7 @@ if (localhost) {
     var fundingURL = "http://localhost:8080/api/Funding";
     var resetURL = fundingURL;
 } else {
-    var fundingURL = "https://fundingdashboardapi.azurewebsites.net/api/Funding";
+    var fundingURL = "https://fundingdashboard.azurewebsites.net/api/Funding";
     var resetURL = fundingURL;
 }
 
@@ -32,22 +32,37 @@ function InitialiseTable() {
     table = $('#funding').DataTable({
         data: serverData,
         lengthMenu: [5,10,15,20,25],
+        //colReorder: {
+        //    order: [0, 1, 2, 4, 3, 15, 10, 5, 6, 7, 8, 9, 11, 12, 13, 14, 16]
+        //},
+
         columns: [
+           
             { data: "name" },
             { data: "csp" },
             { data: "serviceLine" },
+            
             { data: "minimumCriteria" },
+            { data: "fundingValue" },
+            { data: "supportingDocumentation" },
             { data: "description" },
+            
+            
+            
             { data: "howToApply" },
             { data: "whenToApply" },
             { data: "approvalProcess" },
             { data: "fundingCollection" },
             { data: "addedBy" },
             { data: "addedOn" },
+            //{ data: "archived" },
+            
             { data: "uk" },
             { data: "usa" },
             { data: "eur" },
-            {data: "asia"}
+            { data: "asia" },
+           
+            
 
             
                     //    '<td> ' + obj.whenToApply + '</td> ' +
@@ -77,25 +92,26 @@ function InitialiseTable() {
                 })
             }
         },
-        
+
+      
 
         columnDefs:
             [
-                { className: "mobile-p", "targets": [3] },
+                { className: "mobile-p", "targets": [7] },
 
                 {
-                    targets: 10,
+                    targets: 12,
                     render: $.fn.dataTable.render.moment("YYYY-MM-DDTHH:mm:ss","DD-MM-YYYY")
                 },
 
                 {
-                    targets: [1,2,3,4,5],
+                    targets: [0,1,2,3,4,5,6,12,7],
                     visible: true,
                     searchable: true
                 },
 
                 {
-                    targets: [6,7,8,11,12,13,14],
+                    targets: [7,8,9,10,11,13,14,15,16],
                     visible: false,
                     searchable: false
                 },

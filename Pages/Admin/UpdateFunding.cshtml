@@ -27,10 +27,10 @@
                 </div>
 
                 @*<div class="form-group">
-                        <label asp-for="funding.Region" class="control-label"></label>
-                        <input asp-for="funding.Region" class="form-control" />
-                        <span asp-validation-for="funding.Region" class="text-danger"></span>
-                    </div>*@
+            <label asp-for="funding.Region" class="control-label"></label>
+            <input asp-for="funding.Region" class="form-control" />
+            <span asp-validation-for="funding.Region" class="text-danger"></span>
+        </div>*@
                 <div class="form-group">
                     <label>Funding Regions</label><br />
                     <div class="form-check form-check-inline">
@@ -49,7 +49,7 @@
                         <input class="form-check-input" asp-for="funding.ASIA" /> @Html.DisplayNameFor(model => model.funding.ASIA)
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label asp-for="funding.CSP" class="control-label"></label>
                     @{
@@ -58,8 +58,8 @@
                                 new SelectListItem { Text = "Azure", Value="AZURE"},
                                 new SelectListItem { Text = "AWS", Value="AWS"},
                                 new SelectListItem { Text = "GCP", Value="GCP"},
-                                
-            }, "Value", "Text");
+
+    }, "Value", "Text");
 
                     }
                     @Html.DropDownListFor(m => m.funding.CSP, selectList1, null, new { @class = "custom-select" })
@@ -81,7 +81,7 @@
                                 new SelectListItem { Text = "Cloud Management Services", Value="Cloud Management Services"},
                                 new SelectListItem { Text = "Platform Resale", Value="Platform Resale"},
                                 new SelectListItem { Text = "Software Services", Value="Software Services"},
-                    }, "Value", "Text");
+            }, "Value", "Text");
 
                     }
                     @Html.DropDownListFor(m => m.funding.ServiceLine, selectList2, null, new { @class = "custom-select" })
@@ -93,6 +93,9 @@
                     <input asp-for="funding.MinimumCriteria" class="form-control" />
                     <span asp-validation-for="funding.MinimumCriteria" class="text-danger"></span>
                 </div>
+
+              
+
                 <div class="form-group">
                     <label asp-for="funding.AddedBy" class="control-label"></label>
                     <input asp-for="funding.AddedBy" class="form-control" readonly />
@@ -116,22 +119,35 @@
             <div class="col-md-8">
                 <div class="form-group">
                     <label asp-for="funding.Description" class="control-label"></label>
-                    <textarea rows="3" cols="180" asp-for="funding.Description" class="form-control"></textarea>
+                    <textarea rows="4" cols="180" asp-for="funding.Description" class="form-control"></textarea>
                     <span asp-validation-for="funding.Description" class="text-danger"></span>
                 </div>
+
+                <div class="form-group">
+                    <label asp-for="funding.FundingValue" class="control-label"></label>
+                    <textarea rows="3" cols="180" asp-for="funding.FundingValue" class="form-control"></textarea>
+                    <span asp-validation-for="funding.FundingValue" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="funding.SupportingDocumentation" class="control-label"></label>
+                    <textarea rows="3" cols="180" asp-for="funding.SupportingDocumentation" class="form-control"></textarea>
+                    <span asp-validation-for="funding.SupportingDocumentation" class="text-danger"></span>
+                </div>
+
                 <div class="form-group">
                     <label asp-for="funding.HowToApply" class="control-label"></label>
-                    <textarea rows="3" cols="180" asp-for="funding.HowToApply" class="form-control"></textarea>
+                    <textarea rows="2" cols="180" asp-for="funding.HowToApply" class="form-control"></textarea>
                     <span asp-validation-for="funding.HowToApply" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="funding.WhenToApply" class="control-label"></label>
-                    <textarea rows="3" cols="180" asp-for="funding.WhenToApply" class="form-control"></textarea>
+                    <textarea rows="1" cols="180" asp-for="funding.WhenToApply" class="form-control"></textarea>
                     <span asp-validation-for="funding.WhenToApply" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="funding.ApprovalProcess" class="control-label"></label>
-                    <textarea rows="3" cols="180" asp-for="funding.ApprovalProcess" class="form-control"></textarea>
+                    <textarea rows="1" cols="180" asp-for="funding.ApprovalProcess" class="form-control"></textarea>
                     <span asp-validation-for="funding.ApprovalProcess" class="text-danger"></span>
                 </div>
                 <div class="form-group">

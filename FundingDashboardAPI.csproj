@@ -28,7 +28,7 @@
 
   <ItemGroup>
     <None Include="wwwroot\wwwsecure\debug.log" />
-    <None Include="wwwroot\wwwsecure\favicon.ico" />
+    <None Include="wwwroot\favicon.ico" />
     <None Include="wwwroot\wwwsecure\index.html" />
     <None Include="wwwroot\wwwsecure\scripts\FundingDashboard.js" />
     <None Include="wwwroot\wwwsecure\scripts\html2pdf.bundle.js" />

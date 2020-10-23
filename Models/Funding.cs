@@ -32,6 +32,14 @@ namespace FundingDashboardAPI.Models
         public string MinimumCriteria { get; set; }
         
         [Required]
+        [Display(Name = "Funding Value")]
+        public string FundingValue { get; set; }
+
+        [Required]
+        [Display(Name = "Supporting Documentation")]
+        public string SupportingDocumentation { get; set; }
+
+        [Required]
         
         public string Description { get; set; }
        
@@ -64,7 +72,11 @@ namespace FundingDashboardAPI.Models
         public bool USA { get; set; }
         public bool EUR { get; set; }
         public bool ASIA { get; set; }
+
+        
+       
+
     }
 
-  
+
 }

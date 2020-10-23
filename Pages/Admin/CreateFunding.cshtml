@@ -58,7 +58,7 @@
                                 new SelectListItem { Text = "AWS", Value="AWS"},
                                 new SelectListItem { Text = "GCP", Value="GCP"},
 
-                            }, "Value", "Text");
+    }, "Value", "Text");
 
                     }
                     @Html.DropDownListFor(m => m.funding.CSP, selectList1, null, new { @class = "custom-select" })
@@ -92,6 +92,11 @@
                     <input asp-for="funding.MinimumCriteria" class="form-control" />
                     <span asp-validation-for="funding.MinimumCriteria" class="text-danger"></span>
                 </div>
+
+               
+
+
+
                 <div class="form-group">
                     @*<label asp-for="funding.AddedBy" class="control-label"></label>*@
                     <input type="hidden" asp-for="funding.AddedBy" class="form-control" readonly value="@User.Identity.Name" />
@@ -118,22 +123,35 @@
             <div class="col-md-8">
                 <div class="form-group">
                     <label asp-for="funding.Description" class="control-label"></label>
-                    <textarea rows="3" cols="180" asp-for="funding.Description" class="form-control"></textarea>
+                    <textarea rows="4" cols="180" asp-for="funding.Description" class="form-control"></textarea>
                     <span asp-validation-for="funding.Description" class="text-danger"></span>
                 </div>
+
+                <div class="form-group">
+                    <label asp-for="funding.FundingValue" class="control-label"></label>
+                    <textarea rows="3" cols="180" asp-for="funding.FundingValue" class="form-control"></textarea>
+                    <span asp-validation-for="funding.FundingValue" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="funding.SupportingDocumentation" class="control-label"></label>
+                    <textarea rows="3" cols="180" asp-for="funding.SupportingDocumentation" class="form-control"></textarea>
+                    <span asp-validation-for="funding.SupportingDocumentation" class="text-danger"></span>
+                </div>
+
                 <div class="form-group">
                     <label asp-for="funding.HowToApply" class="control-label"></label>
-                    <textarea rows="3" cols="180" asp-for="funding.HowToApply" class="form-control"></textarea>
+                    <textarea rows="2" cols="180" asp-for="funding.HowToApply" class="form-control"></textarea>
                     <span asp-validation-for="funding.HowToApply" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="funding.WhenToApply" class="control-label"></label>
-                    <textarea rows="3" cols="180" asp-for="funding.WhenToApply" class="form-control"></textarea>
+                    <textarea rows="1" cols="180" asp-for="funding.WhenToApply" class="form-control"></textarea>
                     <span asp-validation-for="funding.WhenToApply" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="funding.ApprovalProcess" class="control-label"></label>
-                    <textarea rows="3" cols="180" asp-for="funding.ApprovalProcess" class="form-control"></textarea>
+                    <textarea rows="1" cols="180" asp-for="funding.ApprovalProcess" class="form-control"></textarea>
                     <span asp-validation-for="funding.ApprovalProcess" class="text-danger"></span>
                 </div>
                 <div class="form-group">
