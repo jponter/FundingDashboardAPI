@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 
 namespace FundingDashboardAPI.Repositories
@@ -34,7 +33,7 @@ namespace FundingDashboardAPI.Repositories
             {
                 return false;
             }
-            
+
         }
 
         public async Task<bool> Insert(Funding funding)
@@ -66,7 +65,7 @@ namespace FundingDashboardAPI.Repositories
             return funding;
         }
 
-      
+
 
         public async Task<Funding> SelectById(int id)
         {
@@ -81,7 +80,7 @@ namespace FundingDashboardAPI.Repositories
             if (funding != null)
             {
                 db.Update(funding);
-                int count =  await db.SaveChangesAsync();
+                int count = await db.SaveChangesAsync();
 
                 if (count > 0)
                 {
@@ -95,7 +94,7 @@ namespace FundingDashboardAPI.Repositories
 
             }
             return false;
-           
+
         }
 
         public Task<List<Funding>> SelectAllNotArchived()
@@ -158,12 +157,12 @@ namespace FundingDashboardAPI.Repositories
                     }
             }
 
-                
 
-            
+
+
         }
 
-       
-    
+
+
     }
 }

@@ -1,13 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using FundingDashboardAPI.Models;
 using FundingDashboardAPI.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Threading.Tasks;
 
 namespace FundingDashboardAPI.Pages.Admin
 {
@@ -20,7 +18,7 @@ namespace FundingDashboardAPI.Pages.Admin
         public Funding funding { get; set; }
 
         public string Message { get; set; }
-        
+
         public DateTime datetime { get; set; }
 
         public CreateFundingModel(IFundingRepository fundingRepo)
@@ -31,9 +29,9 @@ namespace FundingDashboardAPI.Pages.Admin
         public IActionResult OnGet()
         {
             datetime = DateTime.Now;
-           
-            
-            
+
+
+
             return Page();
 
         }
@@ -49,7 +47,7 @@ namespace FundingDashboardAPI.Pages.Admin
 
             if (ModelState.IsValid)
             {
-               
+
 
                 try
                 {

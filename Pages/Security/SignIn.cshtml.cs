@@ -1,12 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using FundingDashboardAPI.Security;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using FundingDashboardAPI.Models;
-using Microsoft.AspNetCore.Identity;
-using FundingDashboardAPI.Security;
+using System.Threading.Tasks;
 
 namespace FundingDashboardAPI.Models
 {

@@ -25,7 +25,7 @@
             <th>Name</th>
             <th>CSP</th>
             <th>Service Line</th>
-            <th>Added On</th>
+            <th>Last Updated</th>
             <th>Added By</th>
             <th>Archived</th>
             <th>Actions</th>
@@ -40,7 +40,7 @@
             <td>@item.Name</td>
             <td>@item.CSP</td>
             <td>@item.ServiceLine</td>
-            <td>@item.AddedOn.ToShortDateString()</td>
+            <td>@item.AddedOn.ToString("dd/MM/yyyy")</td>
             <td>@item.AddedBy</td>
             <td>@item.Archived</td>
             <td>

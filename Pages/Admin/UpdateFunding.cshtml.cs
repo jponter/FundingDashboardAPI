@@ -1,13 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using FundingDashboardAPI.Models;
 using FundingDashboardAPI.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Threading.Tasks;
 
 namespace FundingDashboardAPI.Pages.Admin
 {
@@ -32,18 +30,18 @@ namespace FundingDashboardAPI.Pages.Admin
         public async Task<IActionResult> OnGetAsync(int fundingId)
         {
             this.funding = await _fundingRepo.SelectById(fundingId);
-            
+
             if (funding == null)
             {
                 this.DataFound = false;
                 this.Message = "Funding Not Found";
-                
+
             }
             else
             {
                 this.DataFound = true;
                 this.Message = "";
-                
+
             }
             dt = funding.AddedOn.ToString("yyyy-MM-dd HH:mm:ss");
             return Page();
@@ -52,13 +50,19 @@ namespace FundingDashboardAPI.Pages.Admin
 
         public async Task<IActionResult> OnPostAsync()
         {
+            DateTime myDateTime = DateTime.Now;
+            string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            //string dt = DateTime.Now.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
+            funding.AddedOn = DateTime.Now;
+
+
             if (ModelState.IsValid)
             {
                 try
                 {
 
-                
-                bool success = await _fundingRepo.Update(funding);
+
+                    bool success = await _fundingRepo.Update(funding);
                     if (success)
                     {
                         Message = "Funding Updated Successfully";
@@ -67,7 +71,7 @@ namespace FundingDashboardAPI.Pages.Admin
                     {
                         Message = "Update failed! ";
                     }
-                
+
                 }
                 catch (DbUpdateException ex1)
                 {

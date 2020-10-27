@@ -1,32 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
+using FundingDashboardAPI.Models;
+using FundingDashboardAPI.Repositories;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.OAuth.Claims;
-using System.Security.Claims;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Net;
-using System.IO;
-using FundingDashboardAPI.Models;
-using Microsoft.EntityFrameworkCore;
-using FundingDashboardAPI.Security;
-using FundingDashboardAPI.Repositories;
-using Microsoft.Extensions.FileProviders;
-using Microsoft.AspNetCore.Authorization;
 
 namespace FundingDashboardAPI
 {
@@ -36,7 +23,7 @@ namespace FundingDashboardAPI
 
         public Startup(IConfiguration config)
         {
-           Configuration = config;
+            Configuration = config;
         }
 
         private void CheckSameSite(HttpContext httpContext, CookieOptions options)
@@ -58,7 +45,7 @@ namespace FundingDashboardAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
-            
+
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -79,12 +66,14 @@ namespace FundingDashboardAPI
             //services.AddIdentity<AppIdentityUser, AppIdentityRole>().AddEntityFrameworkStores<AppIdentityDbContext>();
 
             // Allow sign in via an OpenId Connect provider like OneLogin
-            services.AddAuthentication(options => {
+            services.AddAuthentication(options =>
+            {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
 
             })
-            .AddCookie(options => {
+            .AddCookie(options =>
+            {
                 options.LoginPath = "";
                 options.AccessDeniedPath = "/security/AccessDenied";
             })
@@ -116,7 +105,7 @@ namespace FundingDashboardAPI
             }
             );
 
-            
+
 
             services.AddAuthorization(options =>
             {
@@ -142,7 +131,7 @@ namespace FundingDashboardAPI
             //services.AddScoped<IEmployeeRepository, EmployeeSQLRepository>();
             //services.AddScoped<ICountryRespository, CountrySQLRepository>();
 
-           
+
             services.AddScoped<IFundingRepository, FundingSqlRepository>();
 
             services.AddRazorPages().AddRazorPagesOptions(options =>
@@ -239,7 +228,7 @@ namespace FundingDashboardAPI
 
 
 
-            public static class BrowserDetection
+        public static class BrowserDetection
         {
             // Same as https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/
             public static bool DisallowsSameSiteNone(string userAgent)
@@ -295,8 +284,8 @@ namespace FundingDashboardAPI
             {
                 return !DisallowsSameSiteNone(userAgent);
             }
-        
 
-    }
+
+        }
     }
 }

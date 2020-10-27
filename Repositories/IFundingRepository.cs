@@ -1,8 +1,5 @@
 ﻿using FundingDashboardAPI.Models;
-using Microsoft.EntityFrameworkCore.Storage;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace FundingDashboardAPI.Repositories
@@ -24,6 +21,6 @@ namespace FundingDashboardAPI.Repositories
         public Task<bool> Insert(Funding funding);
         public Task<bool> Update(Funding funding);
         public Task<bool> Delete(int id);
-        
+
     }
 }

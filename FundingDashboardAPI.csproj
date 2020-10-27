@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="Development\FundingDashboard.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.8">
@@ -30,18 +34,6 @@
     <None Include="wwwroot\wwwsecure\debug.log" />
     <None Include="wwwroot\favicon.ico" />
     <None Include="wwwroot\wwwsecure\index.html" />
-    <None Include="wwwroot\wwwsecure\scripts\FundingDashboard.js" />
-    <None Include="wwwroot\wwwsecure\scripts\html2pdf.bundle.js" />
-    <None Include="wwwroot\wwwsecure\scripts\html2pdf.bundle.min.js" />
-    <None Include="wwwroot\wwwsecure\scripts\jquery.js" />
-    <None Include="wwwroot\wwwsecure\scripts\jquery.min.js" />
-    <None Include="wwwroot\wwwsecure\scripts\jquery.min.map" />
-    <None Include="wwwroot\wwwsecure\scripts\jquery.validate.js" />
-    <None Include="wwwroot\wwwsecure\scripts\jquery.validate.min.js" />
-    <None Include="wwwroot\wwwsecure\scripts\jquery.validate.unobtrusive.js" />
-    <None Include="wwwroot\wwwsecure\scripts\jquery.validate.unobtrusive.min.js" />
-    <None Include="wwwroot\wwwsecure\scripts\listgroup.js" />
-    <None Include="wwwroot\wwwsecure\scripts\listgroup.min.js" />
     <None Include="wwwroot\wwwsecure\scripts\moment-with-locales.js" />
     <None Include="wwwroot\wwwsecure\scripts\moment-with-locales.min.js" />
     <None Include="wwwroot\wwwsecure\scripts\moment-with-locales.min.js.map" />

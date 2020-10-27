@@ -28,52 +28,52 @@ $(document).ready(function () {
 
 function InitialiseTable() {
 
-              
+
     table = $('#funding').DataTable({
         data: serverData,
-        lengthMenu: [5,10,15,20,25],
+        lengthMenu: [5, 10, 15, 20, 25],
         //colReorder: {
         //    order: [0, 1, 2, 4, 3, 15, 10, 5, 6, 7, 8, 9, 11, 12, 13, 14, 16]
         //},
 
         columns: [
-           
-            { data: "name" },
-            { data: "csp" },
-            { data: "serviceLine" },
-            
-            { data: "minimumCriteria" },
-            { data: "fundingValue" },
-            { data: "supportingDocumentation" },
-            { data: "description" },
-            
-            
-            
-            { data: "howToApply" },
-            { data: "whenToApply" },
-            { data: "approvalProcess" },
-            { data: "fundingCollection" },
-            { data: "addedBy" },
-            { data: "addedOn" },
-            //{ data: "archived" },
-            
-            { data: "uk" },
-            { data: "usa" },
-            { data: "eur" },
-            { data: "asia" },
-           
-            
 
-            
-                    //    '<td> ' + obj.whenToApply + '</td> ' +
-                    //    '<td> ' + obj.approvalProcess + '</td> ' +
-                    //    '<td> ' + obj.fundingCollection + '</td> ' +
-                    //    '<td> ' + obj.addedBy + '</td> ' +
-                    //    '<td> ' + d.toLocaleDateString() + '</td> ' +
-                    //    '<td> ' + obj.uk + '</td> ' +
-                    //    '<td> ' + obj.usa + '</td> ' +
-                    //    '<td> ' + obj.eur + '</td> ' +
-                    //    '<td> ' + obj.asia + '</td></tr>';
+            { data: "name" }, //0
+
+            { data: "csp" }, //1
+            { data: "serviceLine" }, //2
+            { data: "description" }, //3
+
+            { data: "minimumCriteria" }, //4
+            { data: "fundingValue" }, //5
+            { data: "supportingDocumentation" }, //6
+
+
+            { data: "howToApply" }, //7
+            { data: "whenToApply" }, //8
+            { data: "approvalProcess" }, //9
+            { data: "fundingCollection" }, //10
+            { data: "addedBy" }, //11
+            { data: "addedOn" }, //12
+            //{ data: "archived" }, //13
+
+            { data: "uk" }, //14
+            { data: "usa" }, //15
+            { data: "eur" }, //16
+            { data: "asia" } //17
+
+
+
+
+            //    '<td> ' + obj.whenToApply + '</td> ' +
+            //    '<td> ' + obj.approvalProcess + '</td> ' +
+            //    '<td> ' + obj.fundingCollection + '</td> ' +
+            //    '<td> ' + obj.addedBy + '</td> ' +
+            //    '<td> ' + d.toLocaleDateString() + '</td> ' +
+            //    '<td> ' + obj.uk + '</td> ' +
+            //    '<td> ' + obj.usa + '</td> ' +
+            //    '<td> ' + obj.eur + '</td> ' +
+            //    '<td> ' + obj.asia + '</td></tr>';
 
         ],
 
@@ -84,7 +84,7 @@ function InitialiseTable() {
                     header: function (row) {
                         var data = row.data();
                         return 'Details for ' + data.name;
-                            //+ ' CSP: ' + data[1];
+                        //+ ' CSP: ' + data[1];
                     }
                 }),
                 renderer: $.fn.dataTable.Responsive.renderer.tableAll({
@@ -93,7 +93,7 @@ function InitialiseTable() {
             }
         },
 
-      
+
 
         columnDefs:
             [
@@ -101,17 +101,17 @@ function InitialiseTable() {
 
                 {
                     targets: 12,
-                    render: $.fn.dataTable.render.moment("YYYY-MM-DDTHH:mm:ss","DD-MM-YYYY")
+                    render: $.fn.dataTable.render.moment("YYYY-MM-DDTHH:mm:ss", "DD-MM-YYYY")
                 },
 
                 {
-                    targets: [0,1,2,3,4,5,6,12,7],
+                    targets: [0, 1, 2, 3, 4, 5, 6, 12, 7],
                     visible: true,
                     searchable: true
                 },
 
                 {
-                    targets: [7,8,9,10,11,13,14,15,16],
+                    targets: [7, 8, 9, 10, 11, 13, 14, 15, 16],
                     visible: false,
                     searchable: false
                 },
@@ -125,14 +125,14 @@ function InitialiseTable() {
                 // }
 
             ]
-        
+
 
 
     });
-       
+
 
     //$('#funding').show();    
-    
+
 }
 
 
@@ -140,23 +140,31 @@ function loadFundingReset() {
     try {
         //get the funding
         $.getJSON(resetURL, function (data, status) {
-            console.log("Status: " + status);
+//             console.log("Status: " + status);
+
             if (status == "success") {
-                console.log("getJSON-Funding:");
-                console.log("URL = " + resetURL);
-                console.log(data);
+//                 console.log("getJSON-Funding:");
+
+//                 console.log("URL = " + resetURL);
+
+//                 console.log(data);
+
 
                 serverData = data;
 
                 $(data).each(function (index, obj) {
 
                     //var text = $.trim(obj.skillText);
-                    console.log("Ob: " + obj.id);
-                    console.log("ObName: " + obj.name);
+//                     console.log("Ob: " + obj.id);
+
+//                     console.log("ObName: " + obj.name);
+
                     var csp = $.trim(obj.csp);
-                    console.log("ObCSP: " + csp);
+//                     console.log("ObCSP: " + csp);
+
                     var serviceLine = $.trim(obj.serviceLine);
-                    console.log("ObCSP: " + serviceLine);
+//                     console.log("ObCSP: " + serviceLine);
+
 
                     var isoDate = obj.addedOn;
                     var d = new Date(isoDate);
@@ -185,10 +193,11 @@ function loadFundingReset() {
     }
     catch (e) {
         alert(e);
-        console.log("error getting funding");
+//         console.log("error getting funding");
+
     }
 
-   
+
 }
 
 function loadFundingCSP(csp) {
@@ -196,21 +205,29 @@ function loadFundingCSP(csp) {
     try {
         //get the funding
         $.getJSON(fundingURL + "/byCSP?CSP=" + csp, function (data, status) {
-            console.log("Status: " + status);
+//             console.log("Status: " + status);
+
             if (status == "success") {
-                console.log("getJSON-Funding:");
-                console.log("URL = " + fundingURL + "/byCSP?CSP=" + csp);
-                console.log(data);
+//                 console.log("getJSON-Funding:");
+
+//                 console.log("URL = " + fundingURL + "/byCSP?CSP=" + csp);
+
+//                 console.log(data);
+
 
                 $(data).each(function (index, obj) {
 
                     //var text = $.trim(obj.skillText);
-                    console.log("Ob: " + obj.id);
-                    console.log("ObName: " + obj.name);
+//                     console.log("Ob: " + obj.id);
+
+//                     console.log("ObName: " + obj.name);
+
                     var csp = $.trim(obj.csp);
-                    console.log("ObCSP: " + csp);
+//                     console.log("ObCSP: " + csp);
+
                     var serviceLine = $.trim(obj.serviceLine);
-                    console.log("ObCSP: " + serviceLine);
+//                     console.log("ObCSP: " + serviceLine);
+
 
                     var isoDate = obj.addedOn;
                     var d = new Date(isoDate);
@@ -237,7 +254,8 @@ function loadFundingCSP(csp) {
     }
     catch (e) {
         alert(e);
-        console.log("error getting funding");
+//         console.log("error getting funding");
+
     }
 
 
@@ -248,21 +266,29 @@ function loadFundingSL(SL) {
     try {
         //get the funding
         $.getJSON(fundingURL + "/bySL?SL=" + SL, function (data, status) {
-            console.log("Status: " + status);
+//             console.log("Status: " + status);
+
             if (status == "success") {
-                console.log("getJSON-Funding:");
-                console.log("URL = " + fundingURL + "/bySL?SL=" + SL);
-                console.log(data);
+//                 console.log("getJSON-Funding:");
+
+//                 console.log("URL = " + fundingURL + "/bySL?SL=" + SL);
+
+//                 console.log(data);
+
 
                 $(data).each(function (index, obj) {
 
                     //var text = $.trim(obj.skillText);
-                    console.log("Ob: " + obj.id);
-                    console.log("ObName: " + obj.name);
+//                     console.log("Ob: " + obj.id);
+
+//                     console.log("ObName: " + obj.name);
+
                     var csp = $.trim(obj.csp);
-                    console.log("ObCSP: " + csp);
+//                     console.log("ObCSP: " + csp);
+
                     var serviceLine = $.trim(obj.serviceLine);
-                    console.log("ObCSP: " + serviceLine);
+//                     console.log("ObCSP: " + serviceLine);
+
 
                     var isoDate = obj.addedOn;
                     var d = new Date(isoDate);
@@ -289,7 +315,8 @@ function loadFundingSL(SL) {
     }
     catch (e) {
         alert(e);
-        console.log("error getting funding");
+//         console.log("error getting funding");
+
     }
 
 
@@ -300,21 +327,29 @@ function loadFundingGeo(geo) {
     try {
         //get the funding
         $.getJSON(fundingURL + "/byRegion?Region=" + geo, function (data, status) {
-            console.log("Status: " + status);
+//             console.log("Status: " + status);
+
             if (status == "success") {
-                console.log("getJSON-Funding:");
-                console.log("URL = " + fundingURL + "/byRegion?Region=" + geo);
-                console.log(data);
+//                 console.log("getJSON-Funding:");
+
+//                 console.log("URL = " + fundingURL + "/byRegion?Region=" + geo);
+
+//                 console.log(data);
+
 
                 $(data).each(function (index, obj) {
 
                     //var text = $.trim(obj.skillText);
-                    console.log("Ob: " + obj.id);
-                    console.log("ObName: " + obj.name);
+//                     console.log("Ob: " + obj.id);
+
+//                     console.log("ObName: " + obj.name);
+
                     var csp = $.trim(obj.csp);
-                    console.log("ObCSP: " + csp);
+//                     console.log("ObCSP: " + csp);
+
                     var serviceLine = $.trim(obj.serviceLine);
-                    console.log("ObCSP: " + serviceLine);
+//                     console.log("ObCSP: " + serviceLine);
+
 
                     var isoDate = obj.addedOn;
                     var d = new Date(isoDate);
@@ -341,7 +376,8 @@ function loadFundingGeo(geo) {
     }
     catch (e) {
         alert(e);
-        console.log("error getting funding");
+//         console.log("error getting funding");
+
     }
 
 
@@ -351,14 +387,16 @@ function loadFundingGeo(geo) {
 
 //clear table
 var clearFundingTable = function () {
-    console.log("Clear #funding");
+//     console.log("Clear #funding");
+
     $("#funding tbody tr").remove();
 }
 
 
 function AddFooterFilter() {
     // var table = $('#funding').DataTable();
-    console.log("Flatten and search");
+//     console.log("Flatten and search");
+
 
     table.columns().flatten().each(function (colIdx) {
         // Create the select list and search operation

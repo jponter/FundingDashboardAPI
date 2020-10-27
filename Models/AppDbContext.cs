@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace FundingDashboardAPI.Models
 {
@@ -16,7 +14,7 @@ namespace FundingDashboardAPI.Models
         }
 
         public virtual DbSet<Funding> Funding { get; set; }
-        
+
     }
 }
 

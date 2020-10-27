@@ -1,13 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using FundingDashboardAPI.Models;
 using FundingDashboardAPI.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FundingDashboardAPI.Pages.Admin
 {
@@ -22,7 +20,7 @@ namespace FundingDashboardAPI.Pages.Admin
 
         public List<Funding> Funding { get; set; }
 
-       public IndexModel(IFundingRepository fundingRepo, AppDbContext db)
+        public IndexModel(IFundingRepository fundingRepo, AppDbContext db)
         {
             _fundingRepo = fundingRepo;
             this.db = db;
