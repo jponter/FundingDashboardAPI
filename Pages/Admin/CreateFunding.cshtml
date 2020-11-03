@@ -135,7 +135,7 @@
 
                 <div class="form-group">
                     <label asp-for="funding.SupportingDocumentation" class="control-label"></label>
-                    <textarea rows="3" cols="180" asp-for="funding.SupportingDocumentation" class="form-control"></textarea>
+                    <textarea rows="1" cols="180" asp-for="funding.SupportingDocumentation" class="form-control"></textarea>
                     <span asp-validation-for="funding.SupportingDocumentation" class="text-danger"></span>
                 </div>
 
@@ -146,17 +146,22 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="funding.WhenToApply" class="control-label"></label>
-                    <textarea rows="1" cols="180" asp-for="funding.WhenToApply" class="form-control"></textarea>
+                    <textarea rows="2" cols="180" asp-for="funding.WhenToApply" class="form-control"></textarea>
                     <span asp-validation-for="funding.WhenToApply" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="funding.ApprovalProcess" class="control-label"></label>
-                    <textarea rows="1" cols="180" asp-for="funding.ApprovalProcess" class="form-control"></textarea>
+                    <textarea rows="2" cols="180" asp-for="funding.ApprovalProcess" class="form-control"></textarea>
                     <span asp-validation-for="funding.ApprovalProcess" class="text-danger"></span>
                 </div>
                 <div class="form-group">
+                    <label asp-for="funding.FundingClaimProcess" class="control-label"></label>
+                    <textarea rows="2" cols="180" asp-for="funding.FundingClaimProcess" class="form-control"></textarea>
+                    <span asp-validation-for="funding.FundingClaimProcess" class="text-danger"></span>
+                </div>
+                <div class="form-group">
                     <label asp-for="funding.FundingCollection" class="control-label"></label>
-                    <textarea rows="3" cols="180" asp-for="funding.FundingCollection" class="form-control"></textarea>
+                    <textarea rows="2" cols="180" asp-for="funding.FundingCollection" class="form-control"></textarea>
                     <span asp-validation-for="funding.FundingCollection" class="text-danger"></span>
                 </div>
 

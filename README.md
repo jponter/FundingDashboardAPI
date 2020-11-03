@@ -23,3 +23,5 @@ v0.9 debug candidate
 
 12/10/2020 - v1.0beta 
 --Identity Framework replaced with OneLogin support.
+
+03/11/2020 - added a new field "FundingClaimProcess" moved to V2 of OIDC

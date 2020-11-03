@@ -60,6 +60,10 @@ namespace FundingDashboardAPI.Models
         public string ApprovalProcess { get; set; }
 
         [Required]
+        [Display(Name = "Funding Claim Process")]
+        public string FundingClaimProcess { get; set; }
+
+        [Required]
         [Display(Name = "Funding Collection")]
         public string FundingCollection { get; set; }
 
