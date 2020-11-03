@@ -181,7 +181,7 @@ function loadFundingReset() {
                 //change the datatable data
                 datatable.clear();
                 datatable.rows.add(data);
-                datatable.draw();
+                datatable.columns.adjust().draw();
                 //InitialiseTable();
             } else {
                 alert("Database Connection Error");
