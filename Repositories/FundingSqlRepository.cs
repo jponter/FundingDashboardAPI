@@ -105,7 +105,7 @@ namespace FundingDashboardAPI.Repositories
         public async Task<List<Funding>> SelectByCSP(string CSP)
         {
             List<Funding> funding = new List<Funding>();
-            funding = await db.Funding.AsNoTracking().Where(f => f.CSP.Equals(CSP))
+            funding = await db.Funding.AsNoTracking().Where(f => f.CSP.Equals(CSP) && f.Archived.Equals(false))
                 .ToListAsync();
             return funding;
         }
@@ -113,7 +113,7 @@ namespace FundingDashboardAPI.Repositories
         public async Task<List<Funding>> SelectByServiceLine(string SL)
         {
             List<Funding> funding = new List<Funding>();
-            funding = await db.Funding.AsNoTracking().Where(f => f.ServiceLine.Contains(SL))
+            funding = await db.Funding.AsNoTracking().Where(f => f.ServiceLine.Contains(SL) && f.Archived.Equals(false))
                 .ToListAsync();
             return funding;
         }
@@ -125,28 +125,28 @@ namespace FundingDashboardAPI.Repositories
                 case "uk":
                     {
                         List<Funding> funding = new List<Funding>();
-                        funding = await db.Funding.AsNoTracking().Where(f => f.UK.Equals(true))
+                        funding = await db.Funding.AsNoTracking().Where(f => f.UK.Equals(true) && f.Archived.Equals(false))
                             .ToListAsync();
                         return funding;
                     }
                 case "usa":
                     {
                         List<Funding> funding = new List<Funding>();
-                        funding = await db.Funding.AsNoTracking().Where(f => f.USA.Equals(true))
+                        funding = await db.Funding.AsNoTracking().Where(f => f.USA.Equals(true) && f.Archived.Equals(false))
                             .ToListAsync();
                         return funding;
                     }
                 case "eur":
                     {
                         List<Funding> funding = new List<Funding>();
-                        funding = await db.Funding.AsNoTracking().Where(f => f.EUR.Equals(true))
+                        funding = await db.Funding.AsNoTracking().Where(f => f.EUR.Equals(true) && f.Archived.Equals(false))
                             .ToListAsync();
                         return funding;
                     }
                 case "asia":
                     {
                         List<Funding> funding = new List<Funding>();
-                        funding = await db.Funding.AsNoTracking().Where(f => f.ASIA.Equals(true))
+                        funding = await db.Funding.AsNoTracking().Where(f => f.ASIA.Equals(true) && f.Archived.Equals(false))
                             .ToListAsync();
                         return funding;
                     }
