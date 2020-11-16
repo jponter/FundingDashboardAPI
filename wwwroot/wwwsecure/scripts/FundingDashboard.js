@@ -52,7 +52,7 @@ function InitialiseTable() {
             { data: "howToApply" }, //7
             { data: "whenToApply" }, //8
             { data: "approvalProcess" }, //9
-            {data: "fundingClaimProcess"}, //10
+            { data: "fundingClaimProcess" }, //10
             { data: "fundingCollection" }, //11
             { data: "addedBy" }, //12
             { data: "addedOn" }, //13
@@ -99,6 +99,11 @@ function InitialiseTable() {
         columnDefs:
             [
                 { className: "mobile-p", "targets": [7] },
+
+                { width: "5%", "targets": [1, 13] },
+                { width: "10%", "targets": [0, 2, 6] },
+                { width: "20%", "targets": [3,4,5] },
+               
 
                 {
                     targets: 13,
